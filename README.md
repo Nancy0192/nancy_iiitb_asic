@@ -1,10 +1,13 @@
-# Day 0
+# Tapeout Process 
+## Day 0
 
 Install all the required softwares
 <br>
 + Yosys
 + Iverilog
 + GTKWave
++ OpenSTA
++ Magic
 
 
 <details> <summary><strong>Installation Of Yosys</strong></summary>
@@ -65,3 +68,47 @@ Steps:
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/0dec3ee9-fd93-45d5-a678-fc778af882b5)
 
 </details>
+
+
+<details> <summary><strong>Installation Of OpenSTA</strong></summary>
+<br>
+Steps:
+
+```
+$ sudo apt-get install cmake clang gcctcl swig bison flex
+$ git clone https://github.com/The-OpenROAD-Project/OpenSTA.git
+$ cd OpenSTA
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+
+```
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/123f7c62-e5d1-4046-8e5b-03a32a070d4b)
+
+</details>
+
+
+<details> <summary><strong>Installation Of Magic</strong></summary>
+<br>
+Steps:
+
+```
+$ sudo apt-get install m4
+$ sudo apt-get install tcsh
+$ sudo apt-get install csh
+$ sudo apt-get install libx11-dev
+$ sudo apt-get install tcl-dev tk-dev
+$ sudo apt-get install libcairo2-dev
+$ sudo apt-get install mesa-common-dev libglu1-mesa-dev
+$ sudo apt-get install libncurses-dev
+$ git clone https://github.com/RTimothyEdwards/magic
+$ cd magic
+$ ./configure
+$ make
+$ sudo make install
+
+```
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/694592f3-8e63-4329-8b74-8f12dcf30179)
+
+
