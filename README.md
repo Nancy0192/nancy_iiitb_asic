@@ -8,6 +8,7 @@ Install all the required softwares
 + GTKWave
 + OpenSTA
 + Magic
++ OpenLane
 
 
 <details> <summary><strong>Installation Of Yosys</strong></summary>
