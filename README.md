@@ -1,17 +1,17 @@
 # Tapeout Process 
 ## Day 0
 
-Install all the required softwares
-<br>
-+ Yosys
-+ Iverilog
-+ GTKWave
-+ Ngspice
-+ OpenSTA
-+ Magic
-+ OpenLane
+<details><summary>Install all the required softwares for vsd design</summary>
+  1. Yosys
+   2. Iverilog<br>
+      3. GTKWave<br>
+      4. Ngspice<br>
+      5. OpenSTA<br>
+6. Magic<br>
+7. OpenLane<br>
+</details>
 
-
+## Day 0
 <details> <summary><strong>Installation Of Yosys</strong></summary>
 <br>
  
