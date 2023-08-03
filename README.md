@@ -6,6 +6,7 @@ Install all the required softwares
 + Yosys
 + Iverilog
 + GTKWave
++ Ngspice
 + OpenSTA
 + Magic
 + OpenLane
@@ -70,6 +71,27 @@ Steps:
 </details>
 
 
+
+<details> <summary><strong>Installation Of Ngspice</strong></summary>
+<br>
+Steps:
+
+```
+$ sudo apt-get install build-essential
+$ sudo apt-get install libxaw7-dev
+$ tar -zxvf ngspice-40.tar.gz
+$ cd ngspice-40
+$ mkdir release
+$ cd release
+$ ../configure  --with-x --with-readline=yes --disable-debug
+$ make
+$ sudo make install
+```
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/7e3bf22f-1830-4002-8fa7-8986d08acd47)
+
+</details>
+
+ 
 <details> <summary><strong>Installation Of OpenSTA</strong></summary>
 <br>
 Steps:
