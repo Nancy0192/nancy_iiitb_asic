@@ -1,5 +1,5 @@
 # Tapeout Process 
-## [Day 0](#day-0)
+## Day 0
 
 <details><summary>Install all the required softwares for vsd design</summary>
   1. Yosys
