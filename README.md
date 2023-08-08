@@ -13,7 +13,10 @@ This repository illustrates the whole process required during a tapeout.
      - [Magic](#magic)
      - [OpenLane](#openlane)
   
-</details>
+**Day 1 - Introduction Of Verilog RTL Design and Synthesis**
+- Cloning Of Github folder
+- Simulation - Using Iverilog and GTKWave
+- Synthesis - Using Yosys
 
 
 ## Day 0
@@ -144,5 +147,50 @@ After reboot, you can check for installation using following command:
 ```
 $ sudo docker run hello-world
 ```
+</details>
 
+
+## Day 1 - Introduction Of Verilog RTL Design and Synthesis
+
+In today's Lab, we will learn how to simulate the verilog code as well as synthesize it to create a netlist using the yosys software.
+
+## Cloning Of Github Folder
+The following github repository contains all collaterals for RTL Design and Synthesis Workshop using Sky130 PDK's.
+<details> <summary>Steps For Cloning</summary>
+
+```
+$ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+```
+</details>
+
+## Simulation - Using Iverilog and GTKWave
+
+Simulation or simulation program in Verilog helps to test the logic design using simulation models to represent the logic circuits that interface to the design. A set of simulation models is a testbench.
+In this particular repository, we will be using iverilog to compile the verilog code and gtkwave to view the waveforms.
+
+<details><summary>Verilog Code Required For Simulation</summary>
+<br>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/24a335bf-f30b-4438-b430-f4969057b9fd)
+
+<br>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/e0e90514-d140-489b-8cba-83080d44a6a3)
+
+
+</details>
+
+<details> <summary>Steps For Simulation</summary>
+     
+```
+$ iverilog good_mux.v tb_good_mux.v
+$ ./a.out
+$ gtkwave tb_good_mux.vcd
+```
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/1ad48477-b6e1-477f-95ce-18de38f2fa25)
+
+</details>
+
+## Synthesis - Using Yosys
+Synthesis is the process of developing a physical system using the abstract descriptions of predefined building blocks such as flipflops, latches and logic gates. It creates a gate-level netlist from a model of a circuit described in Verilog. Yosys is a framework for Verilog RTL synthesis which will be used in this repository as synthesis tool.
 
