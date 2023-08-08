@@ -1,8 +1,12 @@
-# Tapeout Process 
-## Day 0
+# Tapeout Process <br>
+This repository illustrates the whole process required during a tapeout.
+
+## Overview
+
+**[Day 0](#day-0)**
 
 <details><summary>Install all the required softwares for vsd design</summary>
-  1. Yosys<br>
+  1.Yosys<br>
    2. Iverilog<br>
       3. GTKWave<br>
       4. Ngspice<br>
