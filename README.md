@@ -40,7 +40,7 @@ $ sudo make install
 
 ## Iverilog
 
-<details> <summary>Steps For Installation Of Iverilog</summary>
+<details> <summary>Steps For Installation</summary>
 
  ```
    $ sudo apt-get install iverilog
