@@ -14,9 +14,9 @@ This repository illustrates the whole process required during a tapeout.
      - [OpenLane](#openlane)
   
 **Day 1 - Introduction Of Verilog RTL Design and Synthesis**
-- Cloning Of Github folder
-- Simulation - Using Iverilog and GTKWave
-- Synthesis - Using Yosys
+- [Cloning Of Github folder](#cloning-of-github-folder)
+- [Simulation - Using Iverilog and GTKWave](#simulation---using-iverilog-and-gtkwave)
+- [Synthesis - Using Yosys](#synthesis---using-yosys)
 
 
 ## Day 0
@@ -193,4 +193,39 @@ $ gtkwave tb_good_mux.vcd
 
 ## Synthesis - Using Yosys
 Synthesis is the process of developing a physical system using the abstract descriptions of predefined building blocks such as flipflops, latches and logic gates. It creates a gate-level netlist from a model of a circuit described in Verilog. Yosys is a framework for Verilog RTL synthesis which will be used in this repository as synthesis tool.
+
+<details> <summary>Steps For Synthesis</summary>
+     Change the working directory to be the one in which we have all the verilog files as per [sky130RTLDesignAndSynthesisWorkshop](#https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git) github repository.
+     
+     
+     $ cd /home/nancy/Documents/ASIC/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+
+Open the yosys on terminal and follow the below commands
+```
+$ yosys
+yosys> read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog good_mux.v
+yosys> synth -top good_mux
+```
+After running synth command, you will see the following data on the terminal
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/1f876869-f417-4d50-b313-af4794ea59b9)
+
+Now we will generate the netlist and view it using the following command
+```
+yosys> abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> show
+```
+
+The following netlist will be created 
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/8097d156-a5d3-42db-b6ff-7fd42c93ee8f)
+
+You can also write the netlist using the following command and also view it
+```
+yosys> write_verilog -noattr good_mux_netlist.v
+yosys> !gvim good_mux_netlist.v
+```
+
+
+
 
