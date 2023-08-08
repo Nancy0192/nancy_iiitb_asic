@@ -3,43 +3,34 @@ This repository illustrates the whole process required during a tapeout.
 
 ## Overview
 
-**[Day 0](#day-0)**
-
-<details><summary>Install all the required softwares for vsd design</summary>
-  1.Yosys<br>
-   2. Iverilog<br>
-      3. GTKWave<br>
-      4. Ngspice<br>
-      5. OpenSTA<br>
-6. Magic<br>
-7. OpenLane<br>
+**Day 0 - Installation Of Required Softwares**
+- Install all the required softwares for vsd design
+     - [Yosys](#yosys)
+     - [Iverilog](#iverilog)
+     - [GTKWave](#gtkwave)
+     - [Ngspice](#ngspice)
+     - [OpenSTA](#opensta)
+     - [Magic](#magic)
+     - [OpenLane](#openlane)
+  
 </details>
 
+
 ## Day 0
-<details> <summary><strong>Installation Of Yosys</strong></summary>
-<br>
- 
-Steps:
-```
- $ git clone https://github.com/YosysHQ/yosys.git
+## Yosys
+<details><summary>Steps For Installation</summary>
 
- $ cd yosys-master
-
- $ sudo apt install make (If make is not installed please install it)
-
- $ sudo apt-get install build-essential clang bison flex
-
-   libreadline-dev gawk tcl-dev libffi-dev git
-
+  ```
+$ git clone https://github.com/YosysHQ/yosys.git
+$ cd yosys-master
+$ sudo apt install make (If make is not installed please install it)
+$ sudo apt-get install build-essential clang bison flex
+  libreadline-dev gawk tcl-dev libffi-dev git
   graphviz xdot pkg-config python3 libboost-system-dev
-
   libboost-python-dev libboost-filesystem-dev zlib1g-dev
-
- $ make config-gcc
-
- $ make
-
- $ sudo make install
+$ make config-gcc
+$ make
+$ sudo make install
 ```
  
 
@@ -47,10 +38,9 @@ Steps:
 
 </details>
 
+## Iverilog
 
-<details> <summary><strong>Installation Of Iverilog</strong></summary>
-<br>
-Steps:
+<details> <summary>Steps For Installation Of Iverilog</summary>
 
  ```
    $ sudo apt-get install iverilog
@@ -59,13 +49,12 @@ Steps:
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/d72c451e-f951-458e-bfae-0a46b7505299)
 </details>
 
-<details> <summary><strong>Installation Of GTKWave</strong></summary>
-<br>
- Steps: 
+
+## GTKWave
+<details> <summary>Steps For Installation</summary>
 
 ```
   $ sudo apt update
-
   $ sudo apt install gtkwave
 ```
 
@@ -75,10 +64,8 @@ Steps:
 </details>
 
 
-
-<details> <summary><strong>Installation Of Ngspice</strong></summary>
-<br>
-Steps:
+## Ngspice
+<details> <summary>Steps For Installation</summary>
 
 ```
 $ sudo apt-get install build-essential
@@ -95,10 +82,9 @@ $ sudo make install
 
 </details>
 
- 
-<details> <summary><strong>Installation Of OpenSTA</strong></summary>
-<br>
-Steps:
+
+ ## OpenSTA
+<details> <summary>Steps For Installation</summary>
 
 ```
 $ sudo apt-get install cmake clang gcctcl swig bison flex
@@ -108,16 +94,14 @@ $ mkdir build
 $ cd build
 $ cmake ..
 $ make
-
 ```
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/123f7c62-e5d1-4046-8e5b-03a32a070d4b)
 
 </details>
 
 
-<details> <summary><strong>Installation Of Magic</strong></summary>
-<br>
-Steps:
+## Magic
+<details> <summary>Steps For Installation</summary>
 
 ```
 $ sudo apt-get install m4
@@ -133,14 +117,13 @@ $ cd magic
 $ ./configure
 $ make
 $ sudo make install
-
 ```
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/694592f3-8e63-4329-8b74-8f12dcf30179)
 </details>
 
-<details> <summary><strong>Installation Of OpenLane</strong></summary>
-<br>
-Steps:
+
+## OpenLane
+<details> <summary>Steps For Installation</summary>
 
 ```
 $ sudo apt-get update
