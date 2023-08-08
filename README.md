@@ -195,7 +195,7 @@ $ gtkwave tb_good_mux.vcd
 Synthesis is the process of developing a physical system using the abstract descriptions of predefined building blocks such as flipflops, latches and logic gates. It creates a gate-level netlist from a model of a circuit described in Verilog. Yosys is a framework for Verilog RTL synthesis which will be used in this repository as synthesis tool.
 
 <details> <summary>Steps For Synthesis</summary>
-     Change the working directory to be the one in which we have all the verilog files as per [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git) github repository.
+     Change the working directory to be the one in which we have all the verilog files as per [github](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git) repository.
      
      
      $ cd /home/nancy/Documents/ASIC/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files
