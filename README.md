@@ -155,7 +155,7 @@ $ sudo docker run hello-world
 In today's Lab, we will learn how to simulate the verilog code as well as synthesize it to create a netlist using the yosys software.
 
 ## Cloning Of Github Folder
-The following github repository contains all collaterals for RTL Design and Synthesis Workshop using Sky130 PDK's.
+The following github repository contains all collaterals for RTL Design and Synthesis using Sky130 PDK's.
 <details> <summary>Steps For Cloning</summary>
 
 ```
