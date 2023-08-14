@@ -18,6 +18,15 @@ This repository illustrates the whole process required during a tapeout.
 - [Simulation - Using Iverilog and GTKWave](#simulation---using-iverilog-and-gtkwave)
 - [Synthesis - Using Yosys](#synthesis---using-yosys)
 
+**Day 2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
+- Introduction to Timing.libs
+- Hierarchical vs Flat Synthesis
+- Various Flop Coding Styles and Optimization
+
+**Day 3 - Combinational and Sequential Optimizations**
+- Optimization
+- Combinational Logic Optimization
+- Sequential Logic Optimization
 
 ## Day 0
 ## Yosys
@@ -222,9 +231,130 @@ The following netlist will be created
 
 You can also write the netlist using the following command and also view it
 ```
+
+
 yosys> write_verilog -noattr good_mux_netlist.v
 yosys> !gvim good_mux_netlist.v
 ```
+</details>
+
+## Day 2
+In today's lab we will go through the timing library and understand the concept of hierarchical and flat synthesis. We will also understand the various flop coding styles and how to optimize that.
+
+## Introduction to Timimg.libs
+
+
+
+
+## Day 3
+
+## Optimization
+As we know that we have two types of logic design in digital either Combinational or sequential, we will go through both of them and understand how to optimize them
+<details> <summary>Combinational Logic Optimization</summary>
+We can optimize the combinational logic in following ways:
+     
+- Decreasing the area and power of the logic to get the most optimized design.  
+ - Constant Propagation: We can propagate the constant values down the logic to get a more optimized design.
+ - Boolean Logic Optimization: We can simplify the boolean expression to get a more optimized logic.
+</details>
+
+<details> <summary>Sequential Logic Optimization</summary>
+We have the following ways to optiize sequential logic:
+     
+- Sequential Constant Propagation: Just like combinational circuits we can propagate the constant values down the logic.
+- State Optimization: In state optimization, we can reduce the unused state.
+- Cloning: Cloning refers to repicate the part of circuit so as to optimize the sequential logic design.+
+- Retiming: Retiming optimizes the circuit by moving the registers in the circuits without affecting the functionality of the circuit.
+
+</details>
+
+## Lab Session On Combinational Logic Synthesis
+This lab session focuses on optimizing the code for a mux to an and gate by constant propagation. 
+We will be using opt_clean to optimize the code as it will remove the unwanted cells and wires.
+
+Example 1 : 
+We have a verilog code for mux as shown below 
+```
+module opt_check (input a , input b , output y);
+ assign y = a?b:0;
+endmodule
+
+```
+
+
+<details><summary>Steps To Optimize:</summary>
+     
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog opt_check.v
+$ synth -top opt_check
+$ opt_clean -purge
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+```
+
+</details>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/6e428b8b-420a-4bb3-a2fc-476dbc515e30)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/1f22b18f-02c5-4a3c-b20f-2b52ca944941)
+
+
+Example 2:
+We have a verilog code as shown below:
+```
+module opt_check2 (input a , input b , output y);
+	assign y = a?1:b;
+endmodule
+
+```
+
+<details><summary>Steps To Optimize:</summary>
+     
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog opt_check2.v
+$ synth -top opt_check2
+$ opt_clean -purge
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+
+```
+</details>
+
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/aeb8bbc0-6889-45ae-a87e-0646690d7a26)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/c224542a-19c3-49cb-bfb4-51206aff8de6)
+
+
+Example 3 : 
+We have a verilog code as shown below: 
+```
+module opt_check3 (input a , input b, input c , output y);
+	assign y = a?(c?b:0):0;
+endmodule
+```
+
+<details><summary>Steps To Optimize:</summary>
+
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog opt_check3.v
+$ synth -top opt_check3
+$ opt_clean -purge
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+```
+
+
+</details>
+
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/e671d533-5f31-4a32-9d29-43dee8f6db02)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/da7297d7-d9d0-4553-9e87-f3469fd582d7)
+
 
 
 
