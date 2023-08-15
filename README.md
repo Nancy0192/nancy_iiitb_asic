@@ -543,15 +543,14 @@ $ !gvim opt_check3_net.v
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/da7297d7-d9d0-4553-9e87-f3469fd582d7)
 
 
-## Lab Session On Sequential Logic Optimization
+##  On Sequential Logic Optimization
 
 This lab will introduce us to the ways by which we can optimize the sequential logic designs.
 
 Example 1:
+
 <details><summary>Steps to optimize:</summary>
-
 ```
-
 $ yosys
 $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ read_verilog dff_const1.v 
@@ -560,7 +559,6 @@ $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ show
 $ write_verilog -noattr dff_const1_net.v
 $ !gvim dff_const1_net.v
-
 ```
 
 </details>
@@ -894,7 +892,7 @@ Steps:
   ```
  - **Precautions with "If"** <br>
      Due to incomplete if statements i.e. when we use "if" without "else" statements, it inferes latches which affects the working of code. But there are some      conditions where we require latches like counters.
-- **Lab Session On Incomplete IF Statement:** <br>
+- ** On Incomplete IF Statement:** <br>
 
 Example 1: <br>
 
