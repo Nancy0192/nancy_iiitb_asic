@@ -450,8 +450,8 @@ We have the following ways to optiize sequential logic:
 
 </details>
 
-## Lab Session On Combinational Logic Optimization
-This lab session focuses on optimizing the code by constant propagation. 
+##  On Combinational Logic Optimization
+This  focuses on optimizing the code by constant propagation. 
 We will be using opt_clean to optimize the code as it will remove the unwanted cells and wires.
 
 Example 1 : 
@@ -550,7 +550,8 @@ This lab will introduce us to the ways by which we can optimize the sequential l
 Example 1:
 <details><summary>Steps to optimize:</summary>
 
-	```
+```
+
 $ yosys
 $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ read_verilog dff_const1.v 
