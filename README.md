@@ -29,13 +29,15 @@ This repository illustrates the whole process required during a tapeout.
 - [Lab Session On Sequential Logic Optimization](#lab_session_on_sequential_logic_optimization)
 
 **Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch**
-- [GLS](#gls)
+- [Gate Level Synthesis](#gate_level_synthesis)
 - [Labs on GLS and Synthesis-Simulation Mismatch](#labs_on_gls_and_synthesis-simulation_mismatch)
 - [Labs on Synthesis-Simulation Mismatch for blocking statement](#labs_on_synthesis-simulation_mismatch_for_blocking_statement)
 
 **Day 5 - If, Case, For loop and For Generate**
-- If, Case, For loop and Generate For loop
-- Lab session 
+- [If Statements](#if_statements)
+- [Case Statements](#case_statements)
+- [For Loop](#for_loop)
+- [Generate For Loop](#generate_for_loop)
 
 ## Day 0
 ## Yosys
@@ -404,7 +406,7 @@ $ !gvim <netlist_name.v>
 </details>
 
 ## Optimizations
-Yosys have the feature to automatically optimize the design so as to form a simpler structure.
+Yosys have the feature to automatically optimize the design so as to form a simpler structure.<br>
 **Example 1 - Multiplication by 2** <br>
 The verilog code and the synthesizing list for the code of multiplication by 2 is given below:
 
@@ -438,7 +440,7 @@ We have the following ways to optiize sequential logic:
 
 </details>
 
-## Lab Session On Combinational Logic Synthesis
+## Lab Session On Combinational Logic Optimization
 This lab session focuses on optimizing the code by constant propagation. 
 We will be using opt_clean to optimize the code as it will remove the unwanted cells and wires.
 
@@ -673,7 +675,7 @@ $ !gvim counter_opt2_net.v
 
 ## Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch
 
-## Gate Level Synthesis(GLS)
+## Gate Level Synthesis
 - **What is GLS?**
      - Running the testbench with netlist as Design Under Test.
      - Netist is logically same as RTL Code.
@@ -1062,7 +1064,7 @@ Steps:
 
     
       
-## For Loop:
+## For Loop
 - It is used in "always" block.
 - It is used for evaluating expression multiple times.
 - Syntax:
@@ -1112,7 +1114,7 @@ Steps:
   
 
 
-## Generate For Loop:
+## Generate For Loop
 - It is used outside the "always" block.
 - It is used for instantiating hardware multiple times.
 - Syntax:
