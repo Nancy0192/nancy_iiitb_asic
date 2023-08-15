@@ -404,8 +404,17 @@ $ !gvim <netlist_name.v>
 </details>
 
 ## Optimization
+Yosys have the feature to automatically optimize the design so as to form a simpler structure.
+**Example 1 - Multiplication by 2** <br>
+The verilog code and the synthesizing list for the code of multiplication by 2 is given below:
 
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/4083d37a-ad46-41f8-9a1d-36d7a7a7e1c3)
 
+The netlist for the same is given below:
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/c465983f-5d7b-4a0a-a3ac-df629bc445bd)
+
+Hence the yosys simplified the code into a simpler circuit.
 
 ## Day 3
 
