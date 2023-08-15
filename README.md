@@ -21,7 +21,7 @@ This repository illustrates the whole process required during a tapeout.
 **Day 2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
 - [Introduction to Timing libs](#introduction-to-timing-libs)
 - [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis)
-- [Various Flop Coding Styles and Optimization](#various-flop-coding-styles-optimization)
+- [Various Flop Coding Styles and Optimization](#various-flop-coding-styles-and-optimization)
 
 **Day 3 - Combinational and Sequential Optimizations**
 - [Optimization](#optimization)
