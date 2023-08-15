@@ -39,6 +39,8 @@ This repository illustrates the whole process required during a tapeout.
 - [For Loop](#for-loop)
 - [Generate For Loop](#generate-for-loop)
 
+**References**
+
 ## Day 0
 ## Yosys
 <details><summary>Steps For Installation</summary>
@@ -1166,7 +1168,17 @@ Steps:
 	   
    </details>
 
- 
+
+## References
+1. https://yosyshq.net/yosys/
+2. https://linux.die.net/man/1/iverilog
+3. https://github.com/steveicarus/iverilog
+4. https://gtkwave.sourceforge.net/gtkwave.pdf
+5. https://ngspice.sourceforge.io/
+6. http://opencircuitdesign.com/magic/
+7. http://opensta.org/
+8. https://openlane.readthedocs.io/en/latest/
+9. https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop
   
 
 
