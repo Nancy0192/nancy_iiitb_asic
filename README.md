@@ -34,8 +34,8 @@ This repository illustrates the whole process required during a tapeout.
 - Labs on Synthesis-Simulation Mismatch for blocking statement.
 
 **Day 5 - If, Case, For loop and For Generate**
-- If Case Constructs
-- 
+- If, Case, For loop and Generate For loop
+- Lab session 
 
 ## Day 0
 ## Yosys
@@ -717,6 +717,107 @@ Steps:
   ```
  - **Precautions with "If"** <br>
      Due to incomplete if statements i.e. when we use "if" without "else" statements, it inferes latches which affects the working of code. But there are some      conditions where we require latches like counters.
+- **Lab Session On Incomplete IF Statement:** <br>
+
+Example 1: <br>
+
+<details><summary>Verilog Code</summary>
+	   
+```
+    module incomp_if (input i0 , input i1 , input i2 , output reg y);
+    always @ (*)
+    begin
+	if(i0)
+		y <= i1;
+    end
+    endmodule
+ ```
+	    
+</details>
+
+<details><summary>RTL Simulation</summary>
+    
+Steps:
+```
+    $ iverilog incomp_if.v tb_incomp_if.v 
+    $ ./a.out
+    $ gtkwave tb_incomp_if.vcd
+ ```
+
+ ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/feb4562e-c152-4e00-8b8e-97c5254cdc92)
+
+	    
+</details>
+
+<details><summary>Synthesis</summary>
+
+Steps:
+ ```
+    $ yosys
+    $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+    $ read_verilog incomp_if.v
+    $ synth -top incomp_if
+    $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    $ show
+    $ write_verilog -noattr incomp_if_net.v
+    $ !gvim incomp_if_net.v
+  ```
+
+ ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/5cbfc724-d0c9-44b3-9279-54c17736c2e7)
+
+
+	    
+ </details>
+
+ Example 2:
+ 
+ <details><summary>Verilog Code</summary>
+	   
+```
+   module incomp_if2 (input i0 , input i1 , input i2 , input i3, output reg y);
+   always @ (*)
+   begin
+	if(i0)
+		y <= i1;
+	else if (i2)
+		y <= i3;
+
+   end
+   endmodule
+ ```
+	    
+</details>
+
+<details><summary>RTL Simulation</summary>
+    
+Steps:
+```
+    $ iverilog incomp_if2.v tb_incomp_if2.v 
+    $ ./a.out
+    $ gtkwave tb_incomp_if2.vcd
+ ```
+
+ ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/85e7afc4-926d-494d-8862-2d891268c008)
+
+</details>
+
+<details><summary>Synthesis</summary>
+
+Steps:
+ ```
+    $ yosys
+    $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+    $ read_verilog incomp_if.v
+    $ synth -top incomp_if
+    $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    $ show
+    $ write_verilog -noattr incomp_if_net.v
+    $ !gvim incomp_if_net.v
+  ```
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/f82ea0b2-50a8-4adb-a963-403a69ee0006)
+
+</details>
 
 ## Case Statements
 - It is used in "always" block.
@@ -740,7 +841,35 @@ Steps:
     - Partial Assignments: If some of the outputs are not assigned any value in some of the segments of case then it inferes latches which can affect the working of code.
     - We should not have overlapping cases as unlike "If" statements no priority is given to any condition hence it will check all the cases even if it matches the one condition, which in return gives unpredictable outputs.
       
+## For Loop:
+- It is used in "always" block.
+- It is used for evaluating expression multiple times.
+- Syntax:
+  ```
+  for (<initiaization>, <condition>, <update>)begin
+   \\ expression to be evaluated
+  end
+  ```
 
-    
+  
+
+
+## Generate For Loop:
+- It is used outside the "always" block.
+- It is used for instantiating hardware multiple times.
+- Syntax:
+  ```
+  genvar k;
+  generate 
+      for (k = 0; k < 4; k++) begin
+         \\ statements to be executed
+         end
+     end
+  endgenerate
+  ```
+
+ 
+  
+
 
     
