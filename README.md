@@ -258,6 +258,9 @@ The name of the library also defines some of the parameters i.e. tt means typica
 The file contains different version of same logic gate either they have different area or speed which can be used according to the circuit.
 The following image shows the different version of and gate modules:
 
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/fbf6271f-3486-447a-a08b-b266044c0e80)
+
+
 
 ## Hierarchical vs Flat Synthesis
 
