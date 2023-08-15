@@ -28,6 +28,10 @@ This repository illustrates the whole process required during a tapeout.
 - Lab Session On Combinational Logic Optimization
 - Lab Session On Sequential Logic Optimization
 
+**Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch**
+- GLS
+- 
+
 ## Day 0
 ## Yosys
 <details><summary>Steps For Installation</summary>
@@ -494,3 +498,41 @@ $ !gvim counter_opt2_net.v
 ```
 
 </details>
+
+
+
+
+## Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch
+
+## Gate Level Synthesis(GLS)
+- **What is GLS?**
+     - Running the testbench with netlist as Design Under Test.
+     - Netist is logically same as RTL Code.
+
+- **Why GLS?**
+     - To verify the logical correctness of design after synthesis.
+     - To ensure the timing of the design is met using delay annotation.
+ 
+  ## Synthesis- Simulation Mismatch
+  - **How Synthesis-Simulation Mismatch happen?**
+      - Missing senstivity list
+      - Blocking vs Non blocking assignment
+      - Non standard verilog coding
+
+ ## Blocking and Non- blocking Statements
+  It affects the code only when we are using it in always block
+- Blocking Statements:
+  - Represented by "=".
+  - Executes the statement in which the order is written.
+- Non-Blocking Statements:
+   - Reprsented by "<="
+   - Executes all the RHS when always block is entered and assigned to LHS.
+   - Parallel execution.
+ 
+  
+  
+   
+	
+	  
+    
+    
