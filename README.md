@@ -418,6 +418,16 @@ The netlist for the same is given below:
 
 Hence the yosys simplified the code into a simpler circuit.
 
+**Example 2 - Multiplication by 8** <br>
+The verilog code and the synthesizing list for the code of multiplication by 2 is given below:
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/bfbaa30f-c1b6-42f0-8e51-6d56849cc743)
+
+The netlist for the same is given below:
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/8d27ba60-718e-4488-83be-17aabbe83d29)
+
+
 ## Day 3
 
 ## Optimization
