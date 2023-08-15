@@ -910,6 +910,43 @@ Steps:
    \\ expression to be evaluated
   end
   ```
+- **Lab Session**
+  
+   Example 1
+  <details><summary>Simulation</summary>
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/3e8837e7-c108-49e3-be22-a3734bb10f3a)
+
+	  
+  </details>
+
+  <details><summary>Synthesis</summary>
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/6e38b8da-e195-4cb4-a5df-cf9b351baaae)
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/5b71e649-bc36-4f76-97ab-3a2b3e1a649a)
+
+  </details>
+
+  Example 2<br>
+
+  <details><summary>Simulation</summary>
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/6f017f11-b86f-4d45-8e1b-db8437f1a181)
+
+  </details>
+
+  <details><summary>Synthesis</summary>
+	  
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/7b4d7b81-838c-400a-8d27-fa6a9835ddae)
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/3e33a8bc-c0fc-4f2f-9ae7-510999056df9)
+
+
+	  
+  </details>
+
+
 
   
 
@@ -927,6 +964,25 @@ Steps:
      end
   endgenerate
   ```
+- **Lab Session**
+
+   Example 1
+   <details><summary>Simulation</summary>
+   
+    ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/34929b7e-929a-42d6-824d-046b027a7324)
+
+	   
+   </details>
+
+   <details><summary>Synthesis</summary>
+   
+    ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/145ea72e-601d-48bf-89f2-e19f88aac76d)
+
+    ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/c90c697e-9948-475e-835d-191e71ea74bf)
+
+
+	   
+   </details>
 
  
   
