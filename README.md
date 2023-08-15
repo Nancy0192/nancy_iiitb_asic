@@ -30,7 +30,8 @@ This repository illustrates the whole process required during a tapeout.
 
 **Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch**
 - GLS
-- 
+- Labs on GLS and Synthesis-Simulation Mismatch
+- Labs on Synthesis-Simulation Mismatch for blocking statement.
 
 ## Day 0
 ## Yosys
@@ -409,6 +410,7 @@ $ !gvim dff_const2_net.v
 
 Example 3 :
 <details><summary>Steps:</summary>
+
 ```
 $ yosys
 $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -420,6 +422,7 @@ $ show
 $ write_verilog -noattr dff_const3_net.v
 $ !gvim dff_const3_net.v
 ```
+	
 </details>
 
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/79e348d4-26c0-4c39-b83e-beabcaee8889)
@@ -459,6 +462,7 @@ $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ show
 $ write_verilog -noattr counter_opt_net.v
 $ !gvim counter_opt_net.v
+
 ```
 
 </details>
@@ -529,10 +533,111 @@ $ !gvim counter_opt2_net.v
    - Executes all the RHS when always block is entered and assigned to LHS.
    - Parallel execution.
  
+  ## Labs on GLS and Synthesis-Simulation Mismatch
+
+  **Example 1:** <br>
+  We have a verilog code for mux using the ternary operator. We will first simulate it and observe its behaviour.
+  <details><summary>Steps For Simulation</summary>
+
+  ```
+  $ iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+  $ ./a.out
+  $ gtkwave tb_ternary_operator_mux.vcd
+  ```
+
+  The verilog code and RTL simulation is shown below:
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/58ee5195-e9b7-444c-9a52-099ed0a66a0a)
+
+</details>
+
+  Now we will invoke yosys and create a netlist as shown below
+  <details><summary>Steps For creating A Netlist</summary>
+	  
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog ternary_operator_mux.v 
+$ synth -top ternary_operator_mux
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr ternary_operator_mux_net.v
+$ !gvim ternary_operator_mux_net.v
+ ```
+
+ ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/a655fdfc-f149-49d4-bb6c-a11822cf5f5d)
+
+  </details>
   
+   Now we will do the gate level synthesis (GLS) as shown below:
+
+   <details><summary>Steps To Do GLS:</summary>
+
+   ```
+   $ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux.v tb_ternary_operator_mux.v
+   $ ./a.out
+   $ gtkwave tb_ternary_operator_mux.vcd
+  ```
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/7c590ccd-93cf-4d88-a832-cc5161116b9c)
+
+
+   </details>
+
+   In this example there is no mismatch in Synthesis and simulation.
+
+  **Example 2:** <br>
+   In this example we have a mux created using the if-else condition, we will then compare the synthesis and simulation results.
+
+  <details><summary>Steps For Simulation</summary>
+
+  ```
+  $ iverilog bad_mux.v tb_bad_mux.v
+  $ ./a.out
+  $ gtkwave tb_bad_mux.vcd
+```
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/7aacf0cd-6c47-4085-822f-7295a4a93da2)
+
+
+
+  </details>
+
+  Now we will do the gate level synthesis (GLS) as shown below:
+
+  <details><summary>Steps For Creating a Netlist</summary>
+	  
+  ```
+  $ yosys
+  $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  $ read_verilog bad_mux.v
+  $ synth -top bad_mux
+  $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  $ show
+  $ write_verilog -noattr bad_mux_net.v
+  $ !gvim bad_mux_net.v
+  ```
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/1e7e59bc-d7f3-406d-a63e-4d851d175ada)
+
   
-   
-	
+</details>
+
+
+Now we will do the gate level synthesis (GLS) as shown below:
+
+   <details><summary>Steps To Do GLS:</summary>
+
+   ```
+   $ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux.v tb_bad_mux.v
+   $ ./a.out
+   $ gtkwave tb_bad_mux.vcd
+  ```
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/525adbdf-bafc-4656-9d84-47a8be3baab9)
+
+</details>
+
 	  
     
     
