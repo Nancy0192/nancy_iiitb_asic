@@ -251,7 +251,159 @@ yosys> !gvim good_mux_netlist.v
 In today's lab we will go through the timing library and understand the concept of hierarchical and flat synthesis. We will also understand the various flop coding styles and how to optimize that.
 
 ## Introduction to Timimg.libs
+In this repository we have been using sky130_fd_sc_hd__tt_025C_1v80.lib file which contains PVT parameters i.e. Process, Voltage and Temperature parameters. It also contains the technology that we are using i.e. CMOS.
+The name of the library also defines some of the parameters i.e. tt means typical process, 025C defines the temperature and v0 defines the voltage.
+The file contains different version of same logic gate either they have different area or speed which can be used according to the circuit.
+The following image shows the different version of and gate modules:
 
+
+## Hierarchical vs Flat Synthesis
+
+### Hierarchical Synthesis
+In hierarchical synthesis, we have a top module in which sub-modules are instantiated and are designed or synthesized independently before combining with the top module.
+We have taken a top module named as multiple_module.v in which we have instantiated two sub-modules as shown below
+```
+module sub_module2 (input a, input b, output y);
+   assign y = a | b;
+endmodule
+
+module sub_module1 (input a, input b, output y);
+   assign y = a&b;
+endmodule
+
+
+module multiple_modules (input a, input b, input c , output y);
+   wire net1;
+   sub_module1 u1(.a(a),.b(b),.y(net1));  //net1 = a&b
+   sub_module2 u2(.a(net1),.b(c),.y(y));  //y = net1|c ,ie y = a&b + c;
+endmodule
+```
+Now we will syhthesize the same using following commands:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+read_verilog 
+read_verilog multiple_modules.v 
+synth -top multiple_modules
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show multiple_modules
+write_verilog -noattr multiple_modules_net.v
+!gvim multiple_modules_net.v 
+```
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/c7030e92-e3f8-438d-aafd-348d5a8bb1d4)
+
+
+### Flat Synthesis
+In the flat synthesis hierarchies are flattened out and directly instantiates gates here.
+We have taken the same code of multiple modulesand ran the following commands to flatten it :
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+read_verilog 
+read_verilog multiple_modules.v 
+synth -top multiple_modules
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+flatten
+show
+write_verilog -noattr multiple_modules_net.v
+!gvim multiple_modules_net.v
+```
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/4587aa84-0b51-4a2f-be11-1be209ac2903)
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/79282610-d31c-46e7-b8d9-e0dabd48bf86)
+
+
+## Various Flop Coding Styles and Optimization
+### Need Of Flip Flop
+Flip-flops are the quintessential edge-triggered logic. Along with the fact that they have memory, this makes them the gate-keeper component that can block when there is no clock edge, sample signals on the clock edge, and preserve the output signal away from a clock edge. Flip-flops allow the the clock control the flow of signals from one component to the next.
+
+**General Steps For Simulation**
+
+```
+$ iverilog <rtl_code.v> <tb_rtl_code.v>
+$ ./a.out
+$ gtkwave <vcd_file>
+```
+
+**General Steps For Synthesis**
+
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+$ read_verilog <module_name.v> 
+$ synth -top <top_module_name>
+$ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr <netlist_name.v>
+$ !gvim <netlist_name.v>
+```
+
+## Flip Flop Simulation And Synthesis
+### D-FF With Synchronous Reset
+<details><summary>Simulation</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/bfda4266-6730-4b80-bc10-f42f7dbd93e3)
+
+	
+</details>
+
+<details><summary>Synthesis</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/fae2d642-5f06-4ee3-8d82-0c8482407455)
+
+</details>
+
+### D-FF With Asynchronous Reset
+
+<details><summary>Simulation</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/04c423b6-29b3-40d9-bbe6-9dbc0a5bf271)
+
+</details>
+
+<details><summary>Synthesis</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/2e5f9c91-9cf8-46e9-9682-8e7f55c3fd32)
+
+ 
+</details>
+
+### D-FF With Asynchronous Set
+
+<details><summary>Simulation</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/82773a98-a6f1-4153-8d6d-d1c27ff504cc)
+
+	
+</details>
+
+<details><summary>Synthesis</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/6a93055f-84ef-42bf-800c-a816bc49e363)
+
+ 
+</details>
+
+
+### D-FF With Asynchronous and Synchronous Reset
+<details><summary>Simulation</summary>
+
+ ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/f2c634c4-174b-49ac-9ab5-c97c9bc9c56c)
+
+</details>
+
+<details><summary>Synthesis</summary>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/765cf848-a7b5-4ecf-bea0-c4e0f976d02e)
+
+	
+</details>
+
+## Optimization
 
 
 
