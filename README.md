@@ -19,25 +19,25 @@ This repository illustrates the whole process required during a tapeout.
 - [Synthesis - Using Yosys](#synthesis---using-yosys)
 
 **Day 2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
-- [Introduction to Timing libs](#introduction_to_timing_libs)
-- [Hierarchical vs Flat Synthesis](#hierarchical_vs_flat_synthesis)
-- [Various Flop Coding Styles and Optimization](#various_flop_coding_styles_optimization)
+- [Introduction to Timing libs](#introduction-to-timing-libs)
+- [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis)
+- [Various Flop Coding Styles and Optimization](#various-flop-coding-styles-optimization)
 
 **Day 3 - Combinational and Sequential Optimizations**
 - [Optimization](#optimization)
-- [Lab Session On Combinational Logic Optimization](#lab_session_on_combinational_logic_optimization)
-- [Lab Session On Sequential Logic Optimization](#lab_session_on_sequential_logic_optimization)
+- [Lab Session On Combinational Logic Optimization](#lab-session-on-combinational-logic-optimization)
+- [Lab Session On Sequential Logic Optimization](#lab-session-on-sequential-logic-optimization)
 
 **Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch**
-- [Gate Level Synthesis](#gate_level_synthesis)
-- [Labs on GLS and Synthesis-Simulation Mismatch](#labs_on_gls_and_synthesis-simulation_mismatch)
-- [Labs on Synthesis-Simulation Mismatch for blocking statement](#labs_on_synthesis-simulation_mismatch_for_blocking_statement)
+- [Gate Level Synthesis](#gate-level-synthesis)
+- [Labs on GLS and Synthesis-Simulation Mismatch](#labs-on-gls-and-synthesis-simulation-mismatch)
+- [Labs on Synthesis-Simulation Mismatch for blocking statement](#labs-on-synthesis-simulation-mismatch-for-blocking-statement)
 
 **Day 5 - If, Case, For loop and For Generate**
-- [If Statements](#if_statements)
-- [Case Statements](#case_statements)
-- [For Loop](#for_loop)
-- [Generate For Loop](#generate_for_loop)
+- [If Statements](#if-statements)
+- [Case Statements](#case-statements)
+- [For Loop](#for-loop)
+- [Generate For Loop](#generate-for-loop)
 
 ## Day 0
 ## Yosys
