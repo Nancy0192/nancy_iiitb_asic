@@ -569,6 +569,7 @@ $ !gvim dff_const1_net.v
 
 
 Example 2:
+
 <details><summary>Steps:</summary>
 ```
 $ yosys
@@ -581,6 +582,9 @@ $ show
 $ write_verilog -noattr dff_const2_net.v
 $ !gvim dff_const2_net.v
 ```
+
+
+
 </details>
 
 
