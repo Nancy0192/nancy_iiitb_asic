@@ -25,8 +25,8 @@ This repository illustrates the whole process required during a tapeout.
 
 **Day 3 - Combinational and Sequential Optimizations**
 - Optimization
-- Combinational Logic Optimization
-- Sequential Logic Optimization
+- Lab Session On Combinational Logic Optimization
+- Lab Session On Sequential Logic Optimization
 
 ## Day 0
 ## Yosys
@@ -269,7 +269,7 @@ We have the following ways to optiize sequential logic:
 </details>
 
 ## Lab Session On Combinational Logic Synthesis
-This lab session focuses on optimizing the code for a mux to an and gate by constant propagation. 
+This lab session focuses on optimizing the code by constant propagation. 
 We will be using opt_clean to optimize the code as it will remove the unwanted cells and wires.
 
 Example 1 : 
@@ -292,6 +292,8 @@ $ synth -top opt_check
 $ opt_clean -purge
 $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
 $ show
+$ write_verilog -noattr opt_check_net.v
+$ !gvim opt_check_net.v
 ```
 
 </details>
@@ -319,7 +321,8 @@ $ synth -top opt_check2
 $ opt_clean -purge
 $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
 $ show
-
+$ write_verilog -noattr opt_check2_net.v
+$ !gvim opt_check2_net.v
 ```
 </details>
 
@@ -346,6 +349,8 @@ $ synth -top opt_check3
 $ opt_clean -purge
 $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
 $ show
+$ write_verilog -noattr opt_check3_net.v
+$ !gvim opt_check3_net.v
 ```
 
 
@@ -356,6 +361,136 @@ $ show
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/da7297d7-d9d0-4553-9e87-f3469fd582d7)
 
 
+## Lab Session On Sequential Logic Optimization
+
+This lab will introduce us to the ways by which we can optimize the sequential logic designs.
+
+Example 1:
+<details><summary>Steps to optimize:</summary>
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog dff_const1.v 
+$ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr dff_const1_net.v
+$ !gvim dff_const1_net.v
+```
+</details>
 
 
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/f3581087-1e27-454c-a7fa-ed2dfa6fd465)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/751cf198-968b-4848-ad75-4b84359b72db)
 
+
+Example 2:
+<details><summary>Steps:</summary>
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog dff_const2.v 
+$ synth -top dff_const2
+$ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr dff_const2_net.v
+$ !gvim dff_const2_net.v
+```
+</details>
+
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/4399f401-c706-40b8-83fb-5441b0141f97)
+
+
+Example 3 :
+<details><summary>Steps:</summary>
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog dff_const3.v 
+$ synth -top dff_const3
+$ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr dff_const3_net.v
+$ !gvim dff_const3_net.v
+```
+</details>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/79e348d4-26c0-4c39-b83e-beabcaee8889)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/47211527-8c91-4dce-9f29-785d95f04f38)
+
+
+# Optimization Of Unused States
+Any logic which is not having direct connection with the primary output are optimized. In a circuit we can have one or more primary output and any logic which does not have any relation with primary output are optimized as shown below:
+
+Example: 
+For the verilog code shown below we don't need two bits and it will be optimized.
+```
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = count[0];
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
+```
+
+<details><summary>Steps:</summary>
+	
+```
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog counter_opt.v 
+$ synth -top counter_opt
+$ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr counter_opt_net.v
+$ !gvim counter_opt_net.v
+```
+
+</details>
+
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/d3bc0b01-5adb-485c-aafa-19521bd5bd16)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/1c2cc626-3fb9-4d8f-a36b-2b6a0b4bdef6)
+
+Now we will compare the design when we are using all three bits of the counter. Copy and edit the code as below
+Verilog Code:
+```
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = (count[3:0] == 3'b100);
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
+```
+
+<details><summary>Steps To Optimize:</summary> 
+'''
+$ yosys
+$ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ read_verilog counter_opt2.v 
+$ synth -top counter_opt2
+$ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+$ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+$ show
+$ write_verilog -noattr counter_opt2_net.v
+$ !gvim counter_opt2_net.v
+```
+
+</details>
