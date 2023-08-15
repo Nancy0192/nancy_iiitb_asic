@@ -19,19 +19,19 @@ This repository illustrates the whole process required during a tapeout.
 - [Synthesis - Using Yosys](#synthesis---using-yosys)
 
 **Day 2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
-- Introduction to Timing.libs
-- Hierarchical vs Flat Synthesis
-- Various Flop Coding Styles and Optimization
+- [Introduction to Timing.libs](#introduction_to_timing.libs)
+- [Hierarchical vs Flat Synthesis](#hierarchical_vs_flat_synthesis)
+- [Various Flop Coding Styles and Optimization](#various_flop_coding_styles_optimization)
 
 **Day 3 - Combinational and Sequential Optimizations**
-- Optimization
-- Lab Session On Combinational Logic Optimization
-- Lab Session On Sequential Logic Optimization
+- [Optimization](#optimization)
+- [Lab Session On Combinational Logic Optimization](#lab_session_on_combinational_logic_optimization)
+- [Lab Session On Sequential Logic Optimization](#lab_session_on_sequential_logic_optimization)
 
 **Day 4 - GLS, Blocking vs Non-blocking and Synthesis-Simulation mismatch**
-- GLS
-- Labs on GLS and Synthesis-Simulation Mismatch
-- Labs on Synthesis-Simulation Mismatch for blocking statement.
+- [GLS](#gls)
+- [Labs on GLS and Synthesis-Simulation Mismatch](#labs_on_gls_and_synthesis-simulation_mismatch)
+- [Labs on Synthesis-Simulation Mismatch for blocking statement](#labs_on_synthesis-simulation_mismatch_for_blocking_statement)
 
 **Day 5 - If, Case, For loop and For Generate**
 - If, Case, For loop and Generate For loop
