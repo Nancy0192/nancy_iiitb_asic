@@ -549,8 +549,8 @@ This lab will introduce us to the ways by which we can optimize the sequential l
 
 Example 1:
 <details><summary>Steps to optimize:</summary>
-	
-```
+
+	```
 $ yosys
 $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ read_verilog dff_const1.v 
@@ -559,6 +559,7 @@ $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 $ show
 $ write_verilog -noattr dff_const1_net.v
 $ !gvim dff_const1_net.v
+
 ```
 
 </details>
