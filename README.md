@@ -33,6 +33,10 @@ This repository illustrates the whole process required during a tapeout.
 - Labs on GLS and Synthesis-Simulation Mismatch
 - Labs on Synthesis-Simulation Mismatch for blocking statement.
 
+**Day 5 - If, Case, For loop and For Generate**
+- If Case Constructs
+- 
+
 ## Day 0
 ## Yosys
 <details><summary>Steps For Installation</summary>
@@ -694,10 +698,49 @@ Steps:
 
   ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/65322439-b972-454c-b3bb-bb0200b9fae7)
 
-    
-    
-    
- </details>
+
+</details>
+
+## Day 5 - If, Case, For loop and For Generate
+## If Statements
+- It is mainly used to create priority logic.
+- Syntax:
+  ```
+   if (condition)
+       begin
+       // Code to be executed if the condition is true
+       end
+   else
+       begin
+       // Code to be executed if the condition is false
+       end
+  ```
+ - **Precautions with "If"** <br>
+     Due to incomplete if statements i.e. when we use "if" without "else" statements, it inferes latches which affects the working of code. But there are some      conditions where we require latches like counters.
+
+## Case Statements
+- It is used in "always" block.
+- Variable which is used in case statement shoul be a reg.
+- Syntax:
+  ```
+   case(choice)
+     choice1: begin
+     --------
+     --------
+     end
+     choice2: begin
+     --------
+     --------
+     end
+     default: <statements>
+   endcase
+  ```
+- **Precautions with "Case"** <br>
+    - Incomplete case also inferes latches and to avoid that we should use default statement in case.
+    - Partial Assignments: If some of the outputs are not assigned any value in some of the segments of case then it inferes latches which can affect the working of code.
+    - We should not have overlapping cases as unlike "If" statements no priority is given to any condition hence it will check all the cases even if it matches the one condition, which in return gives unpredictable outputs.
+      
+
     
 
     
