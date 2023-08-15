@@ -19,7 +19,7 @@ This repository illustrates the whole process required during a tapeout.
 - [Synthesis - Using Yosys](#synthesis---using-yosys)
 
 **Day 2 - Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
-- [Introduction to Timing.libs](#introduction_to_timing.libs)
+- [Introduction to Timing libs](#introduction_to_timing_libs)
 - [Hierarchical vs Flat Synthesis](#hierarchical_vs_flat_synthesis)
 - [Various Flop Coding Styles and Optimization](#various_flop_coding_styles_optimization)
 
@@ -252,7 +252,7 @@ yosys> !gvim good_mux_netlist.v
 ## Day 2
 In today's lab we will go through the timing library and understand the concept of hierarchical and flat synthesis. We will also understand the various flop coding styles and how to optimize that.
 
-## Introduction to Timimg.libs
+## Introduction to Timimg libs
 In this repository we have been using sky130_fd_sc_hd__tt_025C_1v80.lib file which contains PVT parameters i.e. Process, Voltage and Temperature parameters. It also contains the technology that we are using i.e. CMOS.
 The name of the library also defines some of the parameters i.e. tt means typical process, 025C defines the temperature and v0 defines the voltage.
 The file contains different version of same logic gate either they have different area or speed which can be used according to the circuit.
