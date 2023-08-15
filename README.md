@@ -629,15 +629,75 @@ Now we will do the gate level synthesis (GLS) as shown below:
    <details><summary>Steps To Do GLS:</summary>
 
    ```
-   $ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux.v tb_bad_mux.v
+   $ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
    $ ./a.out
    $ gtkwave tb_bad_mux.vcd
   ```
 
-![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/525adbdf-bafc-4656-9d84-47a8be3baab9)
+![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/aad98179-8b2e-429e-b2aa-bb7db62978ff)
+
 
 </details>
 
-	  
+
+## Labs on Synthesis-Simulation Mismatch for blocking statement
+
+Verilog Code:
+
+```
+    module blocking_caveat (input a , input b , input  c, output reg d); 
+    reg x;
+    always @ (*)
+    begin
+	d = x & c;
+	x = a | b;
+    end
+    endmodule
+ ```
+
     
+ <details><summary>RTL Simulation:</summary>
+
+
+Steps:
+
+    ```
+    $ iverilog blocking_caveat.v tb_blocking_caveat.v
+    $ ./a.out
+    $ gtkwave tb_blocking_caveat.vcd 
+    ```
+
+    
+ ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/b7d972f3-aabd-4e6e-935a-9258eddf4287)
+    
+
+</details>
+
+ <details><summary>GLS:</summary>
+    
+ Steps:
+    
+    ```
+    $ yosys
+    $ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+    $ read_verilog blocking_caveat.v
+    $ synth -top blocking_caveat
+    $ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    $ show
+    $ write_verilog -noattr blocking_caveat_net.v
+    $ !gvim blocking_caveat_net.v
+    $ exit
+    $ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
+    $ ./a.out
+    $ gtkwave tb_blocking_caveat.vcd
+    ```
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/65322439-b972-454c-b3bb-bb0200b9fae7)
+
+    
+    
+    
+ </details>
+    
+
     
