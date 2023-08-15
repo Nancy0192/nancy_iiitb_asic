@@ -543,7 +543,7 @@ $ !gvim opt_check3_net.v
 ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/da7297d7-d9d0-4553-9e87-f3469fd582d7)
 
 
-##  On Sequential Logic Optimization
+##  Lab Session On Sequential Logic Optimization
 
 This lab will introduce us to the ways by which we can optimize the sequential logic designs.
 
