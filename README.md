@@ -840,6 +840,66 @@ Steps:
     - Incomplete case also inferes latches and to avoid that we should use default statement in case.
     - Partial Assignments: If some of the outputs are not assigned any value in some of the segments of case then it inferes latches which can affect the working of code.
     - We should not have overlapping cases as unlike "If" statements no priority is given to any condition hence it will check all the cases even if it matches the one condition, which in return gives unpredictable outputs.
+
+- **Lab Session On Incomplete Case Statement:** <br>
+
+     Example 1: <br>
+     <details><summary>Simulation</summary>
+
+     ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/4f3a3718-21ce-4141-8f6d-52cae8acf394)
+
+	     
+     </details>
+
+     <details><summary>Synthesis</summary>
+	     
+     ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/7174e9a0-7e49-4978-98fb-e984f1af0845)
+
+     ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/e51e1436-4244-429a-a3c6-5feba5044881)
+
+	     
+     </details>
+
+- **Lab Session On Complete Case Statement:** <br>
+     Example 1: <br>
+     <details><summary>Simulation</summary>
+
+     ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/85a54b4c-9d7b-4ba6-a2eb-bf83d8113c30)
+
+
+     </details>
+     
+     <details><summary>Synthesis</summary>
+
+     ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/ad466c3e-00f9-428c-ab3e-63ecb8231813)
+
+     ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/b6205c1a-ab02-4dd9-9993-1974249e815b)
+
+
+     </details>
+
+- **Lab Session On Partial Complete Case Statement:** <br>
+    Example 1:<br>
+    <details><summary>Simulation</summary>
+
+    ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/dfac7c70-171d-4b7d-aea0-7ae79cf60e78)
+
+  </details>
+
+  <details><summary>Synthesis</summary>
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/15b7eb44-dedc-4bbd-ab6a-89fdc41bca74)
+
+  ![image](https://github.com/Nancy0192/nancy_iiitb_asic/assets/140998633/9d1ff067-01f5-4737-9c93-69ecdca158dc)
+	  
+  </details>
+  
+
+
+  
+
+
+    
       
 ## For Loop:
 - It is used in "always" block.
